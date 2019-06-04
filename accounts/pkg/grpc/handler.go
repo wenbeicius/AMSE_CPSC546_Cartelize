@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 	grpc "github.com/go-kit/kit/transport/grpc"
-	endpoint "github.com/terasurfer/AMSE_CPSC546_Cartelize/accounts/pkg/endpoint"
-	pb "github.com/terasurfer/AMSE_CPSC546_Cartelize/accounts/pkg/grpc/pb"
+	endpoint "github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/endpoint"
+	pb "github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/grpc/pb"
 	context1 "golang.org/x/net/context"
 )
 

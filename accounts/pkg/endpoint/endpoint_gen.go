@@ -3,7 +3,7 @@ package endpoint
 
 import (
 	endpoint "github.com/go-kit/kit/endpoint"
-	service "github.com/terasurfer/AMSE_CPSC546_Cartelize/accounts/pkg/service"
+	service "github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/service"
 )
 
 // Endpoints collects all of the endpoints that compose a profile service. It's

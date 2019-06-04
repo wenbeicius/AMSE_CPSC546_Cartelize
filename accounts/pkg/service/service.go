@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/terasurfer/AMSE_CPSC546_Cartelize/accounts/pkg/models"
+	"github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/models"
 )
 
 // AccountsService describes the service.
