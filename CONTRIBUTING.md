@@ -9,7 +9,7 @@ Welcome classmates! if you want to contribute to this application, pick a curren
 3. Create a [branch](#branch-name-guidelines) where you will work.
 4. Test and review your work.
 5. Commit your changes.
-6. Sync your fork on GitHub and the repo on your computer with the latest changes from the poltrack repository (*see How to [sync](#how-to-sync-your-fork) your fork*). This will minimize the effort needed to merge your changes in the poltrack repo.
+6. Sync your fork on GitHub and the repo on your computer with the latest changes from the Cartelize repository (*see How to [sync](#how-to-sync-your-fork) your fork*). This will minimize the effort needed to merge your changes in the Cartelize repo.
 7. Merge upstream changes if necessary and make sure all tests still pass.
 8. Push your work to the remote fork created in Step 2.
 9. Create a Pull Request to initiate the integration of your changes in the [Main project](https://github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize).
