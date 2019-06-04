@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package pb;
+
+
+
+//The Accounts service definition.
+service Accounts {
+ rpc ListAdmins      (ListAdminsRequest     ) returns (ListAdminsReply     );
+ rpc GetAdmin        (GetAdminRequest       ) returns (GetAdminReply       );
+ rpc GetAdminByEmail (GetAdminByEmailRequest) returns (GetAdminByEmailReply);
+ rpc CreateAdmin     (CreateAdminRequest    ) returns (CreateAdminReply    );
+}
+
+message ListAdminsRequest {}
+
+message ListAdminsReply {}
+
+message GetAdminRequest {}
+
+message GetAdminReply {}
+
+message GetAdminByEmailRequest {}
+
+message GetAdminByEmailReply {}
+
+message CreateAdminRequest {}
+
+message CreateAdminReply {}
+

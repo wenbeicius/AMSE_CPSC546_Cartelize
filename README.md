@@ -18,6 +18,12 @@ dep ensure
 go run main.go
 ```
 
+To start micro-services, run the command
+
+```
+docker-compose up
+```
+
 This should start your project.
 
 
