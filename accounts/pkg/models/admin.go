@@ -60,7 +60,7 @@ func (a *Admin) CreateAdmin(db *sqlx.DB) (*Admin, bool, error) {
 }
 
 // ListAdmins - returns list of admins
-func ListAdmins(db *sqlx.DB) (*[]Admin, error) {
+func ListAdmins(db *sqlx.DB) ([]Admin, error) {
 	var admins []Admin
 
 	err := db.Select(&admins, `SELECT a.id, a.name, a.email FROM admin a`)
@@ -73,7 +73,7 @@ func ListAdmins(db *sqlx.DB) (*[]Admin, error) {
 		return nil, sql.ErrNoRows
 	}
 
-	return &admins, nil
+	return admins, nil
 }
 
 // GetAdmin - returns admin based on id

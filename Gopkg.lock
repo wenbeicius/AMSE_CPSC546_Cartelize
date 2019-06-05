@@ -127,15 +127,15 @@
   version = "v0.0.1"
 
 [[projects]]
-  digest = "1:6c41d4f998a03b6604227ccad36edaed6126c397e5d78709ef4814a1145a6757"
+  branch = "master"
+  digest = "1:b4410479bb93439096b45bb1d131988114a1c8f7d06164eaddd6787f627d39c3"
   name = "github.com/jmoiron/sqlx"
   packages = [
     ".",
     "reflectx"
   ]
   pruneopts = "UT"
-  revision = "d161d7a76b5661016ad0b085869f77fd410f3e6a"
-  version = "v1.2.0"
+  revision = "38398a30ed8516ffda617a04c822de09df8a3ec5"
 
 [[projects]]
   branch = "master"
@@ -144,6 +144,18 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
+
+[[projects]]
+  digest = "1:bdd53b87de8185da386bae179c84d4848854c6870bacacf6a154fe63e2e750f7"
+  name = "github.com/lib/pq"
+  packages = [
+    ".",
+    "oid",
+    "scram"
+  ]
+  pruneopts = "UT"
+  revision = "bc6a3c0594130b1e34005880bc600b6d3f49fa7f"
+  version = "v1.1.1"
 
 [[projects]]
   digest = "1:cd390f0290e379670d3dd50a3dd6b555a2bcee710a87991b0373ee55f6b368c7"
@@ -444,6 +456,7 @@
     "github.com/go-kit/kit/transport/grpc",
     "github.com/golang/protobuf/proto",
     "github.com/jmoiron/sqlx",
+    "github.com/lib/pq",
     "github.com/lightstep/lightstep-tracer-go",
     "github.com/oklog/oklog/pkg/group",
     "github.com/opentracing/opentracing-go",
