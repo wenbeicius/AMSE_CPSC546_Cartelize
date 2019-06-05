@@ -3,6 +3,7 @@ package service
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
@@ -12,6 +13,8 @@ import (
 	endpoint1 "github.com/go-kit/kit/endpoint"
 	log "github.com/go-kit/kit/log"
 	prometheus "github.com/go-kit/kit/metrics/prometheus"
+	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 	lightsteptracergo "github.com/lightstep/lightstep-tracer-go"
 	group "github.com/oklog/oklog/pkg/group"
 	opentracinggo "github.com/opentracing/opentracing-go"
@@ -82,7 +85,14 @@ func Run() {
 		tracer = opentracinggo.GlobalTracer()
 	}
 
-	svc := service.New(getServiceMiddleware(logger))
+	db, err := createDatabase()
+
+	if err != nil {
+		logger.Log("err", err)
+		os.Exit(1)
+	}
+
+	svc := service.New(getServiceMiddleware(logger), db)
 	eps := endpoint.New(svc, getEndpointMiddleware(logger))
 	g := createService(eps)
 	initMetricsEndpoint(g)
@@ -90,6 +100,27 @@ func Run() {
 	logger.Log("exit", g.Run())
 
 }
+
+func createDatabase() (*sqlx.DB, error) {
+	user := "postgres"
+	password := "admin"
+	db, err := sqlx.Connect("postgres", fmt.Sprintf("user=%s password=%s dbname=cartelizedb sslmode=disable",
+		user, password))
+
+	if err != nil {
+		return nil, err
+	}
+
+	ddl, err := ioutil.ReadFile("CreateTables.sql")
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = db.Exec(string(ddl))
+
+	return db, err
+}
+
 func initGRPCHandler(endpoints endpoint.Endpoints, g *group.Group) {
 	options := defaultGRPCOptions(logger, tracer)
 	// Add your GRPC options here
