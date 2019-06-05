@@ -13,7 +13,7 @@ import (
 type AccountsService interface {
 	// Add your methods here
 	// e.x: Foo(ctx context.Context,s string)(rs string, err error)
-	ListAdmins(ctx context.Context) (*[]models.Admin, error)
+	ListAdmins(ctx context.Context) ([]models.Admin, error)
 	GetAdmin(ctx context.Context, id int) (*models.Admin, error)
 	GetAdminByEmail(ctx context.Context, email string) (*models.Admin, error)
 	CreateAdmin(ctx context.Context, admin *models.Admin) (*models.Admin, bool, error)
@@ -25,7 +25,7 @@ type basicAccountsService struct {
 
 var errNotFound = errors.New("Not found")
 
-func (b *basicAccountsService) ListAdmins(ctx context.Context) (*[]models.Admin, error) {
+func (b *basicAccountsService) ListAdmins(ctx context.Context) ([]models.Admin, error) {
 	// TODO implement the business logic of ListAdmins
 	admins, err := models.ListAdmins(b.db)
 	if err == sql.ErrNoRows {

@@ -24,7 +24,7 @@ func LoggingMiddleware(logger log.Logger) Middleware {
 
 }
 
-func (l loggingMiddleware) ListAdmins(ctx context.Context) (m0 *[]models.Admin, e1 error) {
+func (l loggingMiddleware) ListAdmins(ctx context.Context) (m0 []models.Admin, e1 error) {
 	defer func() {
 		l.logger.Log("method", "ListAdmins", "m0", m0, "e1", e1)
 	}()
