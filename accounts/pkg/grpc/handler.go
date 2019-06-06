@@ -3,6 +3,7 @@ package grpc
 import (
 	"context"
 	"errors"
+
 	grpc "github.com/go-kit/kit/transport/grpc"
 	endpoint "github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/endpoint"
 	pb "github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/grpc/pb"

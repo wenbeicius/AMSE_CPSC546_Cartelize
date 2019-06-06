@@ -2,7 +2,9 @@ package service
 
 import (
 	"context"
+
 	log "github.com/go-kit/kit/log"
+	"github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize/accounts/pkg/models"
 )
 
 // Middleware describes a service middleware.

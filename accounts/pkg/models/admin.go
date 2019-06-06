@@ -25,8 +25,8 @@ func (a *Admin) String() string {
 		a.Email)
 }
 
-// Create new admin
-func (a *Admin) Create(db *sqlx.DB) (*Admin, bool, error) {
+// CreateAdmin - create a new admin
+func (a *Admin) CreateAdmin(db *sqlx.DB) (*Admin, bool, error) {
 	var id int
 	var err error
 	var admin []Admin
