@@ -103,9 +103,8 @@ func Run() {
 
 func createDatabase() (*sqlx.DB, error) {
 	user := "postgres"
-	password := "admin"
-	db, err := sqlx.Connect("postgres", fmt.Sprintf("user=%s password=%s dbname=cartelizedb sslmode=disable",
-		user, password))
+	db, err := sqlx.Connect("postgres", fmt.Sprintf("user=%s dbname=cartelizedb sslmode=disable",
+		user))
 
 	if err != nil {
 		return nil, err

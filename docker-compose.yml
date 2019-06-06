@@ -1,5 +1,12 @@
-version: "2"
+version: "3"
 services:
+  db:
+    image: "postgres:11"
+    container_name: "postgres"
+    ports:
+    - "5432:5432"
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
   accounts:
     build:
       context: .
@@ -37,3 +44,6 @@ services:
     - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
     container_name: inventory
     ports: []
+volumes:
+  postgres_data:
+
