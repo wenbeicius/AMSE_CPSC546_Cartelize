@@ -3,7 +3,6 @@ package service
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
@@ -102,20 +101,23 @@ func Run() {
 }
 
 func createDatabase() (*sqlx.DB, error) {
-	user := "postgres"
-	db, err := sqlx.Connect("postgres", fmt.Sprintf("user=%s dbname=cartelizedb sslmode=disable",
-		user))
+	// hostname := "172.20.0.3"
+	// user := "postgres"
+	db, err := sqlx.Open(
+		"postgres",
+		"postgres://postgres:@172.20.0.3:5432/cartelizedb?sslmode=disable")
 
 	if err != nil {
 		return nil, err
 	}
 
-	ddl, err := ioutil.ReadFile("CreateTables.sql")
-	if err != nil {
-		return nil, err
-	}
-
-	_, err = db.Exec(string(ddl))
+	_, err = db.Exec(`
+	CREATE TABLE IF NOT EXISTS admin (
+		id SERIAL PRIMARY KEY,
+		name TEXT,
+		email TEXT,
+		password TEXT
+	);`)
 
 	return db, err
 }
