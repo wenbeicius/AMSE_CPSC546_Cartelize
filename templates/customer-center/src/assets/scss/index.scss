@@ -1,0 +1,27 @@
+@import './config';
+
+.navbar-heading {
+    font-size: 1.25em;
+    padding: 0;
+}
+
+.nav-link {
+    padding-right: 0.25em;
+    padding-bottom: 0.05em;
+    font-size: 1.25em;
+}
+
+.nav-search {
+    border-radius: 2em;
+    width: 8em !important;
+}
+
+.nav-search-icon {
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+.nav-search::placeholder {
+    color: white;
+    margin-left: 2em;
+}

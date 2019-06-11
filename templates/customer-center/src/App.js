@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
+import Header from './components/common/Navbar';
+import Home from './views/Home';
+import Login from './views/Login';
+
+library.add(faUser, faShoppingCart, faSearch)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Header></Header>
+      <Router>
+        <Route path="/" exact component={Home}/>
+        <Route path="/login" exact component={Login}/>
+      </Router>
+    </React.Fragment>
   );
 }
 

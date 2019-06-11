@@ -3,7 +3,6 @@ package service
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
@@ -92,6 +91,10 @@ func Run() {
 		os.Exit(1)
 	}
 
+	defer db.Close()
+
+	logger.Log("msg", "connected to database")
+
 	svc := service.New(getServiceMiddleware(logger), db)
 	eps := endpoint.New(svc, getEndpointMiddleware(logger))
 	g := createService(eps)
@@ -102,22 +105,15 @@ func Run() {
 }
 
 func createDatabase() (*sqlx.DB, error) {
-	user := "postgres"
-	db, err := sqlx.Connect("postgres", fmt.Sprintf("user=%s dbname=cartelizedb sslmode=disable",
-		user))
+	// hostname := "172.20.0.3"
+	// user := "postgres"
+	db := sqlx.MustOpen(
+		"postgres",
+		"postgres://postgres:@172.20.0.3:5432/cartelizedb?sslmode=disable")
 
-	if err != nil {
-		return nil, err
-	}
+	_ = db.MustExec(`CREATE TABLE IF NOT EXISTS admin (id SERIAL PRIMARY KEY,name TEXT,email TEXT,password TEXT);`)
 
-	ddl, err := ioutil.ReadFile("CreateTables.sql")
-	if err != nil {
-		return nil, err
-	}
-
-	_, err = db.Exec(string(ddl))
-
-	return db, err
+	return db, nil
 }
 
 func initGRPCHandler(endpoints endpoint.Endpoints, g *group.Group) {
