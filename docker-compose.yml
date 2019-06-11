@@ -1,8 +1,10 @@
-version: "3"
+version: "2"
 services:
   db:
     image: "postgres:11"
     container_name: "postgres"
+    networks: 
+    - front_default
     ports:
     - "5432:5432"
     volumes:
@@ -12,38 +14,43 @@ services:
       context: .
       dockerfile: accounts/Dockerfile
     restart: always
+    networks: 
+    - front_default
     volumes:
     - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
     container_name: accounts
     ports:
     - 8800:8082
-  auth:
-    build:
-      context: .
-      dockerfile: auth/Dockerfile
-    restart: always
-    volumes:
-    - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
-    container_name: auth
-    ports: []
-  gateway:
-    build:
-      context: .
-      dockerfile: gateway/Dockerfile
-    restart: always
-    volumes:
-    - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
-    container_name: gateway
-    ports: []
-  inventory:
-    build:
-      context: .
-      dockerfile: inventory/Dockerfile
-    restart: always
-    volumes:
-    - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
-    container_name: inventory
-    ports: []
+  # auth:
+  #   build:
+  #     context: .
+  #     dockerfile: auth/Dockerfile
+  #   restart: always
+  #   volumes:
+  #   - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
+  #   container_name: auth
+  #   ports: []
+  # gateway:
+  #   build:
+  #     context: .
+  #     dockerfile: gateway/Dockerfile
+  #   restart: always
+  #   volumes:
+  #   - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
+  #   container_name: gateway
+  #   ports: []
+  # inventory:
+  #   build:
+  #     context: .
+  #     dockerfile: inventory/Dockerfile
+  #   restart: always
+  #   volumes:
+  #   - .:/go/src/github.com/tryu-fullerton-edu/AMSE_CPSC546_Cartelize
+  #   container_name: inventory
+  #   ports: []
 volumes:
   postgres_data:
+networks:
+  front_default:
+    external: true
 

@@ -1,0 +1,9 @@
+.login-card {
+    min-width: 40vw;
+    @media screen and (max-width: 768px) {
+        min-width: 80vw;
+    }
+    @media screen and (max-width: 1024px) {
+        min-width: 60vw;
+    }
+}
