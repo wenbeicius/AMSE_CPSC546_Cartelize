@@ -28,11 +28,11 @@ function Header(props) {
     return (
         <Navbar color="primary" dark expand="md">
             <NavbarBrand href="/" className="text-white navbar-heading">
-                Cartelize
+                <strong>Cartelize</strong>
             </NavbarBrand>
             <NavbarToggler onClick={toggleNavbar}></NavbarToggler>
             <Collapse isOpen={isOpen} navbar>
-                <Nav className="ml-auto">
+                <Nav className="ml-auto" navbar>
                     <Form inline>
                         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                             <InputGroup>
